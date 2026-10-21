@@ -1,0 +1,62 @@
+/* Base styles. Most of the design lives inline in the HTML, exactly as drawn in Claude Design. */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body { margin: 0; background: #F8F6F0; }
+
+img { max-width: 100%; }
+
+[hidden] { display: none !important; }
+
+/* Leave room for the sticky-free nav when jumping to a section */
+section[id], article[id], footer[id] { scroll-margin-top: 16px; }
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid #1235D0;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+footer a:focus-visible { outline-color: #FFFFFF; }
+
+a[href^="mailto"]:hover,
+nav a:hover { color: #1235D0 !important; }
+
+button[data-toggle]:hover { filter: brightness(0.96); }
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -100px;
+  z-index: 10;
+  background: #16161A;
+  color: #FFFFFF;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.skip-link:focus { top: 16px; }
+
+.toggle-label { display: inline-flex; align-items: center; gap: 10px; }
+
+/* Phones: trim the generous desktop spacing */
+@media (max-width: 640px) {
+  nav[aria-label] { padding: 16px 20px !important; }
+  nav [role="group"] { border-left: none !important; padding-left: 0 !important; margin-left: -6px; }
+  #top > div:last-child { max-width: 340px !important; }
+  /* Column headers of the insight/principle table only make sense side by side */
+  div[style*="padding-bottom: 12px; font-size: 14px"] { display: none !important; }
+  #top { padding: 56px 20px 72px !important; gap: 48px !important; }
+  #work, #philosophy { padding: 72px 20px !important; }
+  footer > div { padding: 72px 20px 40px !important; }
+  [id$="-details"], [id$="-detalhes"] { gap: 56px !important; }
+  [id$="-details"] div[style*="padding: 40px"],
+  [id$="-detalhes"] div[style*="padding: 40px"] { padding: 28px 22px !important; }
+  [id$="-details"] div[style*="padding: 36px 40px"],
+  [id$="-detalhes"] div[style*="padding: 36px 40px"] { padding: 28px 22px !important; }
+}
